@@ -1,6 +1,7 @@
 package com.miniprojet.miniprojet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.util.Log;
 import android.util.Patterns;
@@ -81,8 +82,13 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
+
                             FirebaseUser user =mAuth.getCurrentUser();
                             progressDialog.dismiss();
+                            Toast.makeText(RegisterActivity.this,"Registred..\n"+user.getEmail(),Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(RegisterActivity.this,ProfilActivity.class));
+                            finish();
+
                         } else {
                             progressDialog.dismiss();
                             Toast.makeText(RegisterActivity.this,"Authentication failed .",Toast.LENGTH_LONG).show();
