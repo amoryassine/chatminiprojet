@@ -15,7 +15,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
@@ -88,6 +91,27 @@ public class LoginActivity extends AppCompatActivity {
                             pd.dismiss();
 
                             FirebaseUser user =mAuth.getCurrentUser();
+
+                            String email=user.getEmail();
+                            String uid=user.getUid();
+                            HashMap<Object,String> hashMap =new HashMap<>();
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("phone","");
+                            hashMap.put("image","");
+
+                            //firebase database isntance
+                            FirebaseDatabase database=FirebaseDatabase.getInstance();
+                            // path to store user data named "users"
+                            DatabaseReference reference= database.getReference("Users");
+                            // put data within hashmap in database
+                            reference.child(uid).setValue(hashMap);
+
+
+
+
+
                             startActivity(new Intent(LoginActivity.this,ProfilActivity.class));
                             finish();
 
