@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegisterActivity extends AppCompatActivity {
     EditText mEmailEt, mPasswordEt;
     Button mRegisterBtn;
+    TextView mHaveAccountTv;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
 
@@ -41,23 +43,27 @@ public class RegisterActivity extends AppCompatActivity {
         mEmailEt = findViewById(R.id.emailEt);
         mPasswordEt = findViewById(R.id.passwordEt);
         mRegisterBtn = findViewById(R.id.registerBtn);
+        mHaveAccountTv=findViewById(R.id.have_accountTv);
+
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Register user...");
+
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //input email ,password
-                String email =mEmailEt.getText().toString().trim();
-                String password =mPasswordEt.getText().toString().trim();
+                String email=mEmailEt.getText().toString().trim();
+                String password=mPasswordEt.getText().toString().trim();
 
                 //valide
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     //set error and focuss
-                    mEmailEt.setError("Invalid Email");
-                    mEmailEt.setFocusable(true);
+                    //mEmailEt.setError("Invalid Email");
+                    //mEmailEt.setFocusable(true);
+                    registerUser(email, password);
 
                 } else if (password.length() < 6) {
                     mPasswordEt.setError("Password length at least 6 characters ");
@@ -67,6 +73,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+        mHaveAccountTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
             }
         });
 
