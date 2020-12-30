@@ -2,8 +2,6 @@ package com.miniprojet.miniprojet;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.nfc.Tag;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -117,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                             reference.child(uid).setValue(hashMap);
 
                             Toast.makeText(RegisterActivity.this,"Registred..\n"+user.getEmail(),Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(RegisterActivity.this,ProfilActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, DashboardActivity.class));
                             finish();
 
                         } else {

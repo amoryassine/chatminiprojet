@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mEmailEt,mPasswordEt;
@@ -34,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // action et its titre
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar =getSupportActionBar();
         actionBar.setTitle("Login");
         // enable back button
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
@@ -57,8 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                         mEmailEt.setError("Invalid Email ?");
                         mEmailEt.setFocusable(true);
-                    }
-                    else {
                         loginUser(email,passw);
 
                     }
@@ -107,12 +104,9 @@ public class LoginActivity extends AppCompatActivity {
                             DatabaseReference reference= database.getReference("Users");
                             // put data within hashmap in database
                             reference.child(uid).setValue(hashMap);
+                            Intent i=new Intent(LoginActivity.this,DashboardActivity.class);
+                            startActivity(i);
 
-
-
-
-
-                            startActivity(new Intent(LoginActivity.this,ProfilActivity.class));
                             finish();
 
 
