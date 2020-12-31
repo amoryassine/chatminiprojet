@@ -87,7 +87,12 @@ public class LoginActivity extends AppCompatActivity {
 
                             pd.dismiss();
 
+
                             FirebaseUser user =mAuth.getCurrentUser();
+
+
+                           
+
 
                             String email=user.getEmail();
                             String uid=user.getUid();
@@ -104,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                             DatabaseReference reference= database.getReference("Users");
                             // put data within hashmap in database
                             reference.child(uid).setValue(hashMap);
+
                             Intent i=new Intent(LoginActivity.this,DashboardActivity.class);
                             startActivity(i);
 
