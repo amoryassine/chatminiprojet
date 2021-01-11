@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
+import com.miniprojet.miniprojet.adapters.AdapterUsers;
+import com.miniprojet.miniprojet.models.ModelUser;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

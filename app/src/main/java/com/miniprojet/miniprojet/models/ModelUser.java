@@ -1,4 +1,4 @@
-package com.miniprojet.miniprojet;
+package com.miniprojet.miniprojet.models;
 
 public class ModelUser {
     String name,email,phone,image,search,uid ;

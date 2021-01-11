@@ -87,11 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             pd.dismiss();
 
-
                             FirebaseUser user =mAuth.getCurrentUser();
-
-
-                           
 
 
                             String email=user.getEmail();

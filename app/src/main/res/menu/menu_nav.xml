@@ -18,4 +18,10 @@
             android:icon="@drawable/ic_users_black"
     />
 
+    <item
+            android:id="@+id/nav_chat"
+            android:title="Chats"
+            android:icon="@drawable/ic_chat_black"
+    />
+
 </menu>

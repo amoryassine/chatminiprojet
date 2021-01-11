@@ -67,12 +67,21 @@ public class DashboardActivity extends AppCompatActivity {
                 case R.id.nav_users:
                     //users fragment transaction
 
-
                     actionBar.setTitle("Users");
                     UsersFragment fragment3 =new UsersFragment();
                     FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
                     ft3.replace(R.id.content,fragment3,"");
                     ft3.commit();
+                    return true;
+
+                case R.id.nav_chat:
+                    //users fragment transaction
+
+                    actionBar.setTitle("Chats"); //change action bar title
+                    ChatListFragment fragment4 =new ChatListFragment();
+                    FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
+                    ft4.replace(R.id.content,fragment4,"");
+                    ft4.commit();
                     return true;
             }
 
